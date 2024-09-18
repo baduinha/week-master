@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, View, Platform } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -10,11 +11,17 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
+        <View style={styles.headerContainer}>
+          <Image
+            source={require('@/img/logo.jpg')}
+            style={styles.reactLogo}
+          />
+          <ThemedText style={styles.headerText}>
+            Week Master Task Manager
+          </ThemedText>
+        </View>
+      }
+    >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
@@ -61,10 +68,18 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+    height: 50, // ajuste conforme necessário
+    width: 50, // ajuste conforme necessário
+    marginRight: 10, // espaço entre a imagem e o texto
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16, // adiciona algum espaçamento
+  },
+  headerText: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
   },
 });
